@@ -1,0 +1,44 @@
+{
+    "name": "tylercd100/laravel-webhooks",
+    "description": "Laravel - Define Licenses and Limitations",
+    "keywords": [
+        "laravel",
+        "tylercd100"
+    ],
+    "homepage": "https://github.com/tylercd100/laravel-webhooks",
+    "license": "MIT",  
+    "authors": [
+        {
+            "name": "Tyler Arbon",
+            "email": "tylercd100@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "Tylercd100\\Laravel\\Webhooks\\":"src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tylercd100\\Laravel\\Webhooks\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "illuminate/support": "^5.2",
+        "php": "^5.5.9|^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.0|^5.0|^6.3",
+        "orchestra/testbench": "^3.2"
+    },
+    "suggest": {
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tylercd100\\Laravel\\Webhooks\\Providers\\WebhooksServiceProvider"
+            ]
+        }
+    }
+}
