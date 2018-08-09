@@ -5,22 +5,22 @@ namespace Tylercd100\Laravel\Webhooks\Listeners;
 use Tylercd100\Laravel\Webhooks\Interfaces\SendsWebhook;
 use Tylercd100\Laravel\Webhooks\Models\Webhook;
 use Tylercd100\Laravel\Webhooks\Jobs\WebhookJob;
-use Illuminate\Contracts\Support\Arrayable;
 
 class WebhookEventSubscriber
 {
     /**
      * Handles all events
      */
-    public function onEvent($event) {
-        if ($event instanceof SendsWebhook) {
+    public function handleNewEvent($name, $payload) {
+        if (count($payload) > 0 && is_object($payload[0]) && $payload[0] instanceof SendsWebhook) {
+            $event = $payload[0];
             $name = $event->getWebhookEventName();
-            $data = $event->toWebhook();
-            if ($data instanceof Arrayable) {
-                $data = $data->toArray();
-            }
-            foreach(Webhook::where(["event" => $name])->get() as $webhook) {
-                dispatch(new WebhookJob($webhook, $data));
+            $data = $event->getWebhookableData();
+
+            if (!empty($data)) {
+                foreach(Webhook::where(["event" => $name])->get() as $webhook) {
+                    dispatch(new WebhookJob($webhook, $data));
+                }
             }
         }
     }
@@ -34,8 +34,7 @@ class WebhookEventSubscriber
     {
         $events->listen(
             '*',
-            'Tylercd100\Laravel\Webhooks\Listeners\WebhookEventSubscriber@onEvent'
+            'Tylercd100\Laravel\Webhooks\Listeners\WebhookEventSubscriber@handleNewEvent'
         );
     }
-
 }

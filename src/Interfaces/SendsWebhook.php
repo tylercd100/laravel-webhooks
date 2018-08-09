@@ -2,8 +2,6 @@
 
 namespace Tylercd100\Laravel\Webhooks\Interfaces;
 
-use Illuminate\Contracts\Support\Arrayable;
-
 interface SendsWebhook
 {
     /**
@@ -14,10 +12,9 @@ interface SendsWebhook
     public function getWebhookEventName();
 
     /**
-     * Returns an array or an instance of Arrayable
-     * to use for the webhook payload
+     * Returns the webhookable data. Most likely an eloquent model
      *
-     * @return array|Arrayable
+     * @return Webhookable
      */
-    public function toWebhook();
+    public function getWebhookableData();
 }

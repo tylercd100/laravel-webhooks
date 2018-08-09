@@ -37,7 +37,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tylercd100\\Laravel\\Webhooks\\Providers\\WebhooksServiceProvider"
+                "Tylercd100\\Laravel\\Webhooks\\Providers\\WebhookServiceProvider"
             ]
         }
     }
