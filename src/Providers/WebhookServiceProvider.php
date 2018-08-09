@@ -3,6 +3,7 @@
 namespace Tylercd100\Laravel\Webhooks\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Tylercd100\Laravel\Webhooks\Listeners\WebhookEventSubscriber;
 
 class WebhookServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,9 @@ class WebhookServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Event stuff
+        \Event::subscribe(WebhookEventSubscriber::class);
+
         // Migrations
         if (method_exists($this, 'loadMigrationsFrom')) {
             $this->loadMigrationsFrom(__DIR__.'/../../migrations');
