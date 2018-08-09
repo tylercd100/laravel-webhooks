@@ -47,7 +47,7 @@ class WebhookJob implements ShouldQueue
     public function handle()
     {
         if($this->canSend()) {
-            $this->send()
+            $this->send();
         }
     }
 
