@@ -4,6 +4,7 @@ namespace Tylercd100\Laravel\Webhooks\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Tylercd100\Laravel\Webhooks\Models\Webhook;
+use Illuminate\Support\Facades\Auth;
 
 class WebhookController extends Controller
 {
@@ -24,7 +25,8 @@ class WebhookController extends Controller
      */
     public function store()
     {
-        return Webhook::create(request()->only(["target_url", "event"]));
+        $data = array_merge(request()->only(["target_url", "event"]), ["user_id", Auth::id()]);
+        return Webhook::create($data);
     }
 
     /**
