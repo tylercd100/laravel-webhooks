@@ -21,7 +21,7 @@ class WebhookEventSubscriber
 
             
             if ($data instanceof Webhookable) {
-                if (!empty($data->toWebhook())) {
+                if (!empty($data->toWebhook($name))) {
                     foreach(Webhook::where(["event" => $name])->get() as $webhook) {
                         dispatch(new WebhookJob($webhook, $data));
                     }
