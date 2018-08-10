@@ -15,7 +15,9 @@ class WebhookController extends Controller
      */
     public function index()
     {
-        return Webhook::all();
+        return Webhook::where([
+            "user_id" => Auth::id()
+        ])->get();
     }
 
     /**
@@ -25,7 +27,7 @@ class WebhookController extends Controller
      */
     public function store()
     {
-        $data = array_merge(request()->only(["target_url", "event"]), ["user_id", Auth::id()]);
+        $data = array_merge(request()->only(["target_url", "event"]), ["user_id" => Auth::id()]);
         return Webhook::create($data);
     }
 
@@ -37,7 +39,10 @@ class WebhookController extends Controller
      */
     public function show($id)
     {
-        return Webhook::findOrFail($id);
+        return Webhook::where([
+            "id" => $id,
+            "user_id" => Auth::id()
+        ])->firstOrFail();
     }
 
     /**
@@ -48,7 +53,10 @@ class WebhookController extends Controller
      */
     public function update($id)
     {
-        $model = Webhook::findOrFail($id);
+        $model = Webhook::where([
+            "id" => $id,
+            "user_id" => Auth::id()
+        ])->firtOrFail();
         $model->update(request()->only(["target_url", "event"]));
         $model->save();
         return $model;
@@ -62,6 +70,9 @@ class WebhookController extends Controller
      */
     public function destroy($id)
     {
-        return Webhook::findOrFail($id)->delete();
+        return Webhook::where([
+            "id" => $id,
+            "user_id" => Auth::id()
+        ])->firtOrFail()->delete();
     }
 }
