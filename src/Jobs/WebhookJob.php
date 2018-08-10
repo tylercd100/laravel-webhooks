@@ -56,7 +56,7 @@ class WebhookJob implements ShouldQueue
         $client = new Client();
         try {
             $response = $client->post($this->webhook->target_url, [
-                "json" => $this->payload->toWebhook(),
+                "json" => $this->payload->toWebhook($this->webhook->event),
             ]);
         } catch (Exception $e) {
             throw new WebhookException("Webhook #{$this->webhook->id} could not be delivered: ".$e->getMessage(), $e->getCode(), $e);

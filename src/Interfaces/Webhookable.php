@@ -18,7 +18,8 @@ interface Webhookable
      * Returns an array
      * to use for the webhook payload
      * 
+     * @param string $event_name
      * @return array
      */
-    public function toWebhook();
+    public function toWebhook($event_name);
 }
