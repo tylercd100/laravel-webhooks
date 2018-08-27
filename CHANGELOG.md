@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-webhooks` will be documented in this file.
 
+### 1.0.4
+- Fixed Logger
+
 ### 1.0.3
 - Fixed another typo
 
