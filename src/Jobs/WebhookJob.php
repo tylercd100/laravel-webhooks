@@ -2,7 +2,7 @@
 
 namespace Tylercd100\Laravel\Webhooks\Jobs;
 
-use use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
