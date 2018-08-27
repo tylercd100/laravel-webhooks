@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-webhooks` will be documented in this file.
 
+### 1.0.2
+- Silently fails webhook errors.
+
 ### 1.0.1
 - Fixed typo
 

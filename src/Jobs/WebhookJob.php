@@ -2,12 +2,14 @@
 
 namespace Tylercd100\Laravel\Webhooks\Jobs;
 
+use use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Tylercd100\Laravel\Webhooks\Exceptions\WebhookException;
 use Tylercd100\Laravel\Webhooks\Interfaces\Webhookable;
 use Tylercd100\Laravel\Webhooks\Models\Webhook;
+use Exception;
 
 class WebhookJob implements ShouldQueue
 {
@@ -59,7 +61,7 @@ class WebhookJob implements ShouldQueue
                 "json" => $this->payload->toWebhook($this->webhook->event),
             ]);
         } catch (Exception $e) {
-            throw new WebhookException("Webhook #{$this->webhook->id} could not be delivered: ".$e->getMessage(), $e->getCode(), $e);
+            logger()->error("Webhook #{$this->webhook->id} could not be delivered: ".$e->getMessage(), $e->getCode(), $e);
         }
     }
 
