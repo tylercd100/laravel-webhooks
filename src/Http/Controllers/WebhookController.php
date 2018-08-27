@@ -56,7 +56,7 @@ class WebhookController extends Controller
         $model = Webhook::where([
             "id" => $id,
             "user_id" => Auth::id()
-        ])->firtOrFail();
+        ])->firstOrFail();
         $model->update(request()->only(["target_url", "event"]));
         $model->save();
         return $model;
@@ -73,6 +73,6 @@ class WebhookController extends Controller
         return Webhook::where([
             "id" => $id,
             "user_id" => Auth::id()
-        ])->firtOrFail()->delete();
+        ])->firstOrFail()->delete();
     }
 }

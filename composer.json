@@ -1,9 +1,10 @@
 {
     "name": "tylercd100/laravel-webhooks",
-    "description": "Laravel - Define Licenses and Limitations",
+    "description": "Laravel - Subscribe and publish webhooks",
     "keywords": [
         "laravel",
-        "tylercd100"
+        "tylercd100",
+        "webhooks"
     ],
     "homepage": "https://github.com/tylercd100/laravel-webhooks",
     "license": "MIT",  
