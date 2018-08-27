@@ -61,7 +61,7 @@ class WebhookJob implements ShouldQueue
                 "json" => $this->payload->toWebhook($this->webhook->event),
             ]);
         } catch (Exception $e) {
-            logger()->error("Webhook #{$this->webhook->id} could not be delivered: ".$e->getMessage(), $e->getCode(), $e);
+            logger()->error("Webhook #{$this->webhook->id} could not be delivered. ".get_class($e).": ".$e->getMessage());
         }
     }
 
