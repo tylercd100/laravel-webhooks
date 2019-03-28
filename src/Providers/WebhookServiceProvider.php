@@ -14,7 +14,7 @@ class WebhookServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->mergeConfigFrom(__DIR__.'/../../config/webhooks.php', 'webhooks');
     }
 
     /**
@@ -35,5 +35,10 @@ class WebhookServiceProvider extends ServiceProvider
                 __DIR__.'/../../migrations/' => database_path('migrations')
             ], 'migrations');
         }
+
+        // Config
+        $this->publishes([
+            __DIR__.'/../../config/' => base_path('config')
+        ], 'config');
     }
 }

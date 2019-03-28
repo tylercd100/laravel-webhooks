@@ -15,9 +15,9 @@ class Webhook extends Model
      */
     protected $table = 'webhooks';
 
-    public function user()
+    public function owner()
     {
-        $class = config("auth.providers.users.model");
+        $class = config("webhooks.owner");
         
         if (empty($class))
             return null;
