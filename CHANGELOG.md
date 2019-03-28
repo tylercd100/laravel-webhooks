@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-webhooks` will be documented in this file.
 
+### 2.0.2
+- Changed typo in migration class name
+
 ### 2.0.1
 - Changed typo in migration
 
