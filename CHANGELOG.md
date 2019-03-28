@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-webhooks` will be documented in this file.
 
+### 2.0.5
+- Drop foreign key constraint correctly
+
 ### 2.0.4
 - Another fix to the migration file
 

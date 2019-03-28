@@ -14,7 +14,7 @@ class ChangeUserIdToOwnerId extends Migration
     public function up()
     {
         Schema::table('webhooks', function (Blueprint $table) {
-            $table->dropForeign('user_id');
+            $table->dropForeign(['user_id']);
         });
 
         Schema::table('webhooks', function (Blueprint $table) {
