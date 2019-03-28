@@ -2,6 +2,9 @@
 
 All notable changes to `laravel-webhooks` will be documented in this file.
 
+### 2.0.4
+- Another fix to the migration file
+
 ### 2.0.3
 - Added required package for renaming columns in migrations
 

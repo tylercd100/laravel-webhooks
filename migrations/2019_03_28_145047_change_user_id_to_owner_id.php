@@ -15,6 +15,9 @@ class ChangeUserIdToOwnerId extends Migration
     {
         Schema::table('webhooks', function (Blueprint $table) {
             $table->dropForeign('user_id');
+        });
+
+        Schema::table('webhooks', function (Blueprint $table) {
             $table->renameColumn('user_id', 'owner_id');
         });
     }
@@ -28,6 +31,8 @@ class ChangeUserIdToOwnerId extends Migration
     {
         Schema::table('webhooks', function (Blueprint $table) {
             $table->renameColumn('owner_id', 'user_id');
+        });
+        Schema::table('webhooks', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
