@@ -29,6 +29,6 @@ class CreateWebhooksTable extends Migration
         Schema::table('webhooks', function (Blueprint $table) {
             $table->renameColumn('owner_id', 'user_id');
             $table->foreign('user_id')->references('id')->on('users');
-        })
+        });
     }
 }
